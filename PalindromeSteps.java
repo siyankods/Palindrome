@@ -1,9 +1,13 @@
 public class PalindromeSteps {
 
+    public static <T> String reverse(T number) {
+        return new StringBuilder(String.valueOf(number)).reverse().toString();
+    }
+
     // Метод для проверки, является ли число палиндромом
     public static boolean isPalindrome(long number) {
         String str = Long.toString(number);
-        String reversedStr = new StringBuilder(str).reverse().toString();
+        String reversedStr = reverse(str);
         return str.equals(reversedStr);
     }
 
@@ -14,7 +18,7 @@ public class PalindromeSteps {
             if (isPalindrome(number)) {
                 return steps;  // Возвращаем количество шагов
             }
-            long reversed = Long.parseLong(new StringBuilder(Long.toString(number)).reverse().toString());
+            long reversed = Long.parseLong(reverse(number));
             number += reversed;
             steps++;
         }
